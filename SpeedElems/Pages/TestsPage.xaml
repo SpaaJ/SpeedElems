@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<library:BasePage
+    x:Class="SpeedElems.Pages.TestsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SpeedElems.Library.Converters"
+    xmlns:library="clr-namespace:SpeedElems.Library"
+    xmlns:pages="clr-namespace:SpeedElems.Pages"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SpeedElems.ViewModels"
+    Title="TestsPage"
+    x:DataType="viewModels:TestsPageViewModel"
+    x:TypeArguments="viewModels:TestsPageViewModel">
+    <library:BasePage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding PageAppearingCommand}" EventName="Appearing" />
+    </library:BasePage.Behaviors>
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
+
+        <HorizontalStackLayout
+            Grid.Row="0"
+            Margin="0,30,0,0"
+            HorizontalOptions="Center">
+            <Label
+                Margin="5"
+                Text="Standard:"
+                VerticalOptions="Center" />
+            <Entry
+                Margin="5"
+                BackgroundColor="White"
+                Keyboard="Numeric"
+                Text="{Binding StandardID, Mode=TwoWay}"
+                VerticalOptions="Center"
+                WidthRequest="50" />
+            <Label
+                Margin="5"
+                Text="Easy:"
+                VerticalOptions="Center" />
+            <Entry
+                Margin="5"
+                BackgroundColor="White"
+                Keyboard="Numeric"
+                Text="{Binding EasyID, Mode=TwoWay}"
+                VerticalOptions="Center"
+                WidthRequest="50" />
+            <Button
+                Margin="2"
+                Command="{Binding UpdateSettingsCommand}"
+                Text="Update" />
+            <Button
+                Margin="2"
+                Command="{Binding ResetAchievementsCommand}"
+                Text="Reset Achievements" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center">
+            <Button
+                Margin="2"
+                Command="{Binding ClearCommand}"
+                Text="Clear" />
+            <Button
+                Margin="2"
+                Command="{Binding DeleteCommand}"
+                Text="Delete" />
+        </HorizontalStackLayout>
+
+        <ScrollView
+            Grid.Row="3"
+            Margin="100,8"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Editor
+                BackgroundColor="White"
+                FontSize="Micro"
+                HorizontalOptions="Fill"
+                Text="{Binding MetroLogs}" />
+        </ScrollView>
+
+        <Image
+            Grid.Row="1"
+            Aspect="Fill"
+            InputTransparent="True"
+            Source="bordertop.png"
+            VerticalOptions="Start"
+            WidthRequest="{Binding Source={x:Static library:SizesManager.LevelsWidth}}" />
+
+        <Image
+            Grid.RowSpan="4"
+            Aspect="Fill"
+            InputTransparent="True"
+            Source="border.png" />
+
+        <ImageButton
+            Grid.RowSpan="4"
+            Margin="30,20"
+            Command="{Binding GoBackCommand}"
+            HeightRequest="50"
+            HorizontalOptions="End"
+            Source="back.png"
+            VerticalOptions="Start"
+            WidthRequest="50" />
+    </Grid>
+</library:BasePage>

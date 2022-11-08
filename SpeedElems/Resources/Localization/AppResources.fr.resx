@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbusedDoublePressedFire" xml:space="preserve">
+    <value>N'appuyez pas une deuxieme fois sur un Élément de Feu embrasé ! Ça brûle...</value>
+  </data>
+  <data name="AbusedNoMoreFireForWater" xml:space="preserve">
+    <value>Il n'y a plus de Feu pour évaporer les Éléments restants !</value>
+  </data>
+  <data name="Tricks" xml:space="preserve">
+    <value>Trucs :</value>
+  </data>
+  <data name="Tricks_3ParchedGround" xml:space="preserve">
+    <value>Trois Terres déssechés :(</value>
+  </data>
+  <data name="Tricks_5Kills" xml:space="preserve">
+    <value>Mu-Mu-Mu-Mu-Multi-Kill !!!</value>
+  </data>
+  <data name="Tricks_FireCoal" xml:space="preserve">
+    <value>Un charbon !</value>
+  </data>
+  <data name="Tricks_NoFireForWater" xml:space="preserve">
+    <value>Eau abandonnée :(</value>
+  </data>
+  <data name="Tricks_Wind5cm" xml:space="preserve">
+    <value>Vent intense ...</value>
+  </data>
+  <data name="Audio" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="DelayEasy3sec" xml:space="preserve">
+    <value>Facile (3 sec / tour))</value>
+  </data>
+  <data name="DelaysBetweenRounds" xml:space="preserve">
+    <value>Délais entre les tours</value>
+  </data>
+  <data name="DelayStandard2sec" xml:space="preserve">
+    <value>Standard (2 sec / tour)</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Difficulté</value>
+  </data>
+  <data name="Effects" xml:space="preserve">
+    <value>Effets</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="Music" xml:space="preserve">
+    <value>Musique</value>
+  </data>
+  <data name="TutorialBio" xml:space="preserve">
+    <value>Pincez un Élément Bio avec deux doigts pour le comprimer !</value>
+  </data>
+  <data name="TutorialElectricity2" xml:space="preserve">
+    <value>Reliez deux Éléments d'Électricité en appuyant dessus en même temps !</value>
+  </data>
+  <data name="TutorialElectricity3" xml:space="preserve">
+    <value>Reliez trois Éléments d'Électricité en appuyant dessus en même temps !</value>
+  </data>
+  <data name="TutorialFire" xml:space="preserve">
+    <value>Appuyez une fois sur un Élément de Feu pour l'embraser !</value>
+  </data>
+  <data name="TutorialGround" xml:space="preserve">
+    <value>Appuyez deux fois sur un Élément de Terre pour l'éclater !</value>
+  </data>
+  <data name="TutorialRoundNumber" xml:space="preserve">
+    <value>En haut vous voyez le nombre d'étapes d'un niveau : il en reste trois !</value>
+  </data>
+  <data name="TutorialRoundTimer" xml:space="preserve">
+    <value>En bas vous voyez le temp alloué pour une étape : attention ca va aller plus vite !</value>
+  </data>
+  <data name="TutorialThreeElems" xml:space="preserve">
+    <value>Attention, il y a trois Éléments ...</value>
+  </data>
+  <data name="TutorialTwoElems" xml:space="preserve">
+    <value>Attention, il y a deux Éléments ...</value>
+  </data>
+  <data name="TutorialWater1" xml:space="preserve">
+    <value>Déplacez un Élément d'Eau sur un Élément de Feu pour le faire s'évaporer !</value>
+  </data>
+  <data name="TutorialWater2" xml:space="preserve">
+    <value>Déplacez un Élément de Glace sur deux Élément de Feu pour le faire s'évaporer !</value>
+  </data>
+  <data name="TutorialWind" xml:space="preserve">
+    <value>Déplacez un Élément de Vent pour le brouiller !</value>
+  </data>
+  <data name="Bio" xml:space="preserve">
+    <value>Bio</value>
+  </data>
+  <data name="ElectricityDuo" xml:space="preserve">
+    <value>Duo Électrique</value>
+  </data>
+  <data name="ElectricityTrio" xml:space="preserve">
+    <value>Trio Électrique</value>
+  </data>
+  <data name="Fire" xml:space="preserve">
+    <value>Feu</value>
+  </data>
+  <data name="Ground" xml:space="preserve">
+    <value>Terre</value>
+  </data>
+  <data name="Ice" xml:space="preserve">
+    <value>Glace</value>
+  </data>
+  <data name="Water" xml:space="preserve">
+    <value>Eau</value>
+  </data>
+  <data name="Wind" xml:space="preserve">
+    <value>Vent</value>
+  </data>
+  <data name="UnlockedLevels" xml:space="preserve">
+    <value>Les niveaux débloqués en Standard seront automatiquement débloqués en Facile</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="ComingSoon" xml:space="preserve">
+    <value>Arrive bientôt ...</value>
+  </data>
+  <data name="Electricity" xml:space="preserve">
+    <value>Électricité</value>
+  </data>
+  <data name="Elements" xml:space="preserve">
+    <value>Éléments</value>
+  </data>
+  <data name="Elems_FourDifferent" xml:space="preserve">
+    <value>Quatre differents</value>
+  </data>
+  <data name="Elems_ThreeDifferent" xml:space="preserve">
+    <value>Trois différents</value>
+  </data>
+  <data name="Elems_TwoDifferent" xml:space="preserve">
+    <value>Deux différents</value>
+  </data>
+  <data name="ElementCount1" xml:space="preserve">
+    <value>Éléments de </value>
+  </data>
+  <data name="ElementCount2" xml:space="preserve">
+    <value>Double Éléments de </value>
+  </data>
+  <data name="ElementCount3" xml:space="preserve">
+    <value>Triple Éléments de </value>
+  </data>
+  <data name="ElementCount4" xml:space="preserve">
+    <value>Quadruple Éléments de </value>
+  </data>
+  <data name="ElementsPerRound" xml:space="preserve">
+    <value>Éléments par tour</value>
+  </data>
+  <data name="Tricks_GroundWet" xml:space="preserve">
+    <value>De la terre humide ???</value>
+  </data>
+  <data name="Tricks_4Pressed" xml:space="preserve">
+    <value>presse+presse+presse+presse</value>
+  </data>
+  <data name="Tricks_PushTheGround" xml:space="preserve">
+    <value>Enfonce la terre !</value>
+  </data>
+  <data name="Tricks_SpeedFastWithWind" xml:space="preserve">
+    <value>La SPEED est rapide ~~~</value>
+  </data>
+  <data name="Tricks_CheckBox" xml:space="preserve">
+    <value>Cliquer sur lui même...</value>
+  </data>
+</root>

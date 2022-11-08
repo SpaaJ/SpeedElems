@@ -1,0 +1,11 @@
+﻿{"messages":["TutorialWater1"],
+"elems":[
+{"round":0,"type":1,"column":2,"row":2},
+{"round":0,"type":5,"column":7,"row":1},
+
+{"round":1,"type":1,"column":3,"row":1},
+{"round":1,"type":5,"column":9,"row":4},
+
+{"round":2,"type":1,"column":12,"row":5},
+{"round":2,"type":5,"column":3,"row":2}
+]} 

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="SpeedElems.Controls.RoundProgressBar"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:library="clr-namespace:SpeedElems.Library"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Name="Root"
+    Margin="0"
+    Padding="0">
+    <ContentView.Resources>
+        <toolkit:IsNotNullConverter x:Key="IsNotNullConverter" />
+    </ContentView.Resources>
+
+    <Grid
+        Padding="0"
+        ColumnDefinitions="*,*"
+        ColumnSpacing="0"
+        HorizontalOptions="Fill"
+        RowDefinitions="Auto,Auto"
+        RowSpacing="0">
+        <Grid
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            IsVisible="{Binding Source={x:Reference MessageLabel}, Path=Text, Converter={StaticResource IsNotNullConverter}}">
+            <Image Aspect="AspectFill" Source="border_tutorial.png" />
+            <Label
+                x:Name="MessageLabel"
+                FontAttributes="Bold"
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding Message, Source={x:Reference Root}}"
+                TextColor="#6faa66"
+                VerticalOptions="CenterAndExpand" />
+        </Grid>
+        <Grid
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            IsVisible="{Binding Source={x:Reference ErrorMessageLabel}, Path=Text, Converter={StaticResource IsNotNullConverter}}">
+            <Image Aspect="AspectFill" Source="border_abused.png" />
+            <Label
+                x:Name="ErrorMessageLabel"
+                FontAttributes="Bold"
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding ErrorMessage, Source={x:Reference Root}}"
+                TextColor="#aa6f66"
+                VerticalOptions="CenterAndExpand" />
+        </Grid>
+        <ProgressBar
+            Grid.Row="1"
+            Grid.Column="0"
+            Progress="{Binding Progress, Source={x:Reference Root}}"
+            ProgressColor="#bbaa6f66"
+            Rotation="180"
+            ScaleY="2" />
+        <ProgressBar
+            Grid.Row="1"
+            Grid.Column="1"
+            Progress="{Binding Progress, Source={x:Reference Root}}"
+            ProgressColor="#bbaa6f66"
+            ScaleY="2" />
+        <Image
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="-2"
+            Scale="0.7"
+            Source="block_principal.png"
+            WidthRequest="{Binding Source={x:Static library:SizesManager.ElemControlSize}}" />
+        <Image
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="-2"
+            Scale="0.7"
+            Source="{Binding FaceImageSource, Source={x:Reference Root}}"
+            WidthRequest="{Binding Source={x:Static library:SizesManager.ElemControlSize}}" />
+    </Grid>
+</ContentView>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<library:BasePage
+    x:Class="SpeedElems.Pages.LevelsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:library="clr-namespace:SpeedElems.Library"
+    xmlns:pages="clr-namespace:SpeedElems.Pages"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SpeedElems.ViewModels"
+    x:Name="levelsPage"
+    Title="LevelsPage"
+    x:DataType="viewModels:LevelsPageViewModel"
+    x:TypeArguments="viewModels:LevelsPageViewModel">
+    <library:BasePage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding PageAppearingCommand}" EventName="Appearing" />
+    </library:BasePage.Behaviors>
+    <Grid RowDefinitions="Auto,*">
+
+        <Grid
+            Margin="0,32,0,0"
+            ColumnDefinitions="Auto,*"
+            RowDefinitions="Auto,Auto"
+            WidthRequest="{Binding Source={x:Static library:SizesManager.LevelsWidth}}">
+            <Image
+                Grid.RowSpan="3"
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                Source="{library:Translate Levels,
+                                           Type=Image}" />
+            <StackLayout
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="10,0"
+                HorizontalOptions="Start"
+                Orientation="Horizontal"
+                VerticalOptions="End">
+                <RadioButton
+                    Content="{library:Translate DelayStandard2sec}"
+                    FontSize="12"
+                    GroupName="RoundDurationGroup"
+                    IsChecked="True" />
+                <RadioButton
+                    Content="{library:Translate DelayEasy3sec}"
+                    FontSize="12"
+                    GroupName="RoundDurationGroup"
+                    IsChecked="{Binding IsLevelsEasy, Mode=TwoWay}" />
+            </StackLayout>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Margin="0,-5,0,0"
+                FontSize="Micro"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{library:Translate UnlockedLevels}"
+                TextColor="DimGray"
+                VerticalOptions="Start" />
+        </Grid>
+
+        <CollectionView
+            x:Name="collectionView"
+            Grid.Row="1"
+            Margin="0,8,0,0"
+            IsGrouped="True"
+            ItemsSource="{Binding LevelLinksGroups}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+            SelectionMode="Single"
+            WidthRequest="{Binding Source={x:Static library:SizesManager.LevelsWidth}}">
+            <CollectionView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                    Command="{Binding CollectionViewLoadedCommand}"
+                    CommandParameter="{Binding Source={x:Reference collectionView}}"
+                    EventName="Loaded" />
+            </CollectionView.Behaviors>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="10" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate x:DataType="viewModels:LevelLinksGroup">
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Image
+                            Margin="5"
+                            HeightRequest="{Binding Source={x:Static library:SizesManager.ElemControlSize}}"
+                            Source="{Binding ElemTypeSource}"
+                            WidthRequest="{Binding Source={x:Static library:SizesManager.ElemControlSize}}" />
+                        <Label
+                            Margin="0,20,0,0"
+                            FontAttributes="Bold"
+                            FontSize="Subtitle"
+                            Text="{Binding Name}" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="viewModels:LevelLink">
+                    <VerticalStackLayout>
+                        <Image
+                            Margin="4,6"
+                            HeightRequest="{Binding Source={x:Static library:SizesManager.ElemControlSizeMenu}}"
+                            IsEnabled="{Binding IsEnabled}"
+                            Source="{Binding StatusImageSource}"
+                            WidthRequest="{Binding Source={x:Static library:SizesManager.ElemControlSizeMenu}}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="Opacity" Value="1" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState Name="Disabled">
+                                        <VisualState.Setters>
+                                            <Setter Property="Opacity" Value="0.5" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Image>
+                        <Label
+                            Padding="0,-3"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            Text="{Binding ID}" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Footer>
+                <Label
+                    Margin="0,10,0,30"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    HorizontalTextAlignment="Center"
+                    Text="{library:Translate ComingSoon}"
+                    TextColor="Gray" />
+            </CollectionView.Footer>
+        </CollectionView>
+
+        <Image
+            Grid.Row="1"
+            Aspect="Fill"
+            InputTransparent="True"
+            Source="bordertop.png"
+            VerticalOptions="Start"
+            WidthRequest="{Binding Source={x:Static library:SizesManager.LevelsWidth}}" />
+
+        <ActivityIndicator
+            Grid.RowSpan="2"
+            HeightRequest="100"
+            IsRunning="{Binding IsActivityIndicatorRunning}"
+            Color="YellowGreen" />
+
+        <Image
+            Grid.RowSpan="2"
+            Aspect="Fill"
+            InputTransparent="True"
+            Source="border.png" />
+
+        <ImageButton
+            Grid.RowSpan="2"
+            Margin="30,20"
+            Command="{Binding GoToAchievementsPageCommand}"
+            HeightRequest="50"
+            HorizontalOptions="Start"
+            Source="achievements.png"
+            VerticalOptions="Start"
+            WidthRequest="50" />
+
+        <ImageButton
+            Grid.RowSpan="2"
+            Margin="30,20"
+            Command="{Binding GoBackCommand}"
+            HeightRequest="50"
+            HorizontalOptions="End"
+            Source="back.png"
+            VerticalOptions="Start"
+            WidthRequest="50" />
+    </Grid>
+</library:BasePage>

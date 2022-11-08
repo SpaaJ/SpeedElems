@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<style name="SpeedElems.SplashTheme" parent="Maui.SplashTheme">
+		<item name="android:windowBackground">@drawable/arborisoft_background</item>
+		<item name="android:windowSplashScreenBackground">#FFFFFF</item>
+		<item name="android:windowSplashScreenAnimatedIcon">@drawable/icon</item>
+		<item name="android:windowSplashScreenBrandingImage">@drawable/arborisoft_branding</item>
+		<item name="android:windowSplashScreenAnimationDuration">0</item>
+	</style>
+</resources>

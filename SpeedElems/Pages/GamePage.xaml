@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<library:BasePage
+    x:Class="SpeedElems.Pages.GamePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SpeedElems.Controls"
+    xmlns:library="clr-namespace:SpeedElems.Library"
+    xmlns:pages="clr-namespace:SpeedElems.Pages"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SpeedElems.ViewModels"
+    Title="GamePage"
+    x:DataType="viewModels:GamePageViewModel"
+    x:TypeArguments="viewModels:GamePageViewModel">
+    <library:BasePage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding PageAppearingCommand}" EventName="Appearing" />
+    </library:BasePage.Behaviors>
+    <library:BasePage.Resources>
+        <toolkit:IsNotNullConverter x:Key="IsNotNullConverter" />
+    </library:BasePage.Resources>
+
+    <Grid>
+
+        <!--  Achievement  -->
+        <VerticalStackLayout
+            Margin="{Binding Source={x:Static library:SizesManager.GameLayoutMargin}}"
+            HorizontalOptions="Center"
+            IsVisible="{Binding CurrentAchievementMessage, Converter={StaticResource IsNotNullConverter}}">
+            <Image HeightRequest="{Binding Source={x:Static library:SizesManager.ElemControlSize}}" Source="{library:Translate Achievement, Type=Image}" />
+            <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Text="{Binding CurrentAchievementMessage}"
+                TextColor="DimGray" />
+        </VerticalStackLayout>
+
+        <!--  Top bar  -->
+        <controls:LevelProgressBar
+            Margin="0,5"
+            x:DataType="controls:GameControl"
+            BindingContext="{Binding Source={x:Reference GameControl}}"
+            RoundSelected="{Binding RoundSelected}"
+            Rounds="{Binding Rounds}"
+            VerticalOptions="Start" />
+
+        <!--  Bottom bar  -->
+        <controls:RoundProgressBar
+            Margin="0,7"
+            x:DataType="controls:GameControl"
+            BindingContext="{Binding Source={x:Reference GameControl}}"
+            ErrorMessage="{Binding ErrorMessage}"
+            Message="{Binding Message}"
+            RoundDelay="{Binding RoundDelay}"
+            Status="{Binding RoundStatus}"
+            VerticalOptions="End" />
+
+        <controls:GameControl
+            x:Name="GameControl"
+            CurrentAchievementMessage="{Binding CurrentAchievementMessage, Mode=TwoWay}"
+            CurrentElemsLevel="{Binding CurrentElemsLevel}"
+            LevelStatus="{Binding LevelStatus}" />
+
+        <!--  Middle bar  -->
+        <controls:LevelStatusControl
+            CurrentElemsLevel="{Binding CurrentElemsLevel}"
+            LevelStatus="{Binding LevelStatus}"
+            NextLevelCommand="{Binding NextLevelCommand}" />
+
+        <Image
+            Aspect="Fill"
+            InputTransparent="True"
+            Source="border.png" />
+
+        <ImageButton
+            Margin="30,20"
+            Command="{Binding GoBackCommand}"
+            HeightRequest="50"
+            HorizontalOptions="End"
+            Source="back.png"
+            VerticalOptions="Start"
+            WidthRequest="50" />
+    </Grid>
+</library:BasePage>

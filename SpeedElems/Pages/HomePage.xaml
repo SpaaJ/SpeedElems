@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<library:BasePage
+    x:Class="SpeedElems.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SpeedElems.Controls"
+    xmlns:library="clr-namespace:SpeedElems.Library"
+    xmlns:pages="clr-namespace:SpeedElems.Pages"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SpeedElems.ViewModels"
+    x:DataType="viewModels:HomePageViewModel"
+    x:TypeArguments="viewModels:HomePageViewModel">
+    <library:BasePage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding PageAppearingCommand}" EventName="Appearing" />
+    </library:BasePage.Behaviors>
+    <library:BasePage.Resources>
+        <toolkit:IsNotNullConverter x:Key="IsNotNullConverter" />
+    </library:BasePage.Resources>
+    <Grid>
+
+        <!--  Achievement  -->
+        <VerticalStackLayout
+            Margin="20"
+            HorizontalOptions="Center"
+            IsVisible="{Binding CurrentAchievementMessage, Converter={StaticResource IsNotNullConverter}}"
+            Spacing="0">
+            <Image HeightRequest="35" Source="{library:Translate Achievement, Type=Image}" />
+            <Label
+                Margin="0,-3"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Text="{Binding CurrentAchievementMessage}"
+                TextColor="DimGray" />
+        </VerticalStackLayout>
+
+        <AbsoluteLayout>
+
+            <Grid x:Name="titleSpeedStackLayout" ColumnDefinitions="Auto,Auto">
+                <Button
+                    x:Name="windElemControlButton"
+                    Grid.Column="0"
+                    Clicked="WindElemControlButton_Clicked"
+                    Command="{Binding PushTheWindCommand}"
+                    Opacity="0" />
+                <controls:WindElemControl x:Name="windElemControl" Grid.Column="0" />
+                <Image
+                    Grid.Column="1"
+                    Margin="0,10"
+                    Source="title_speed.png" />
+            </Grid>
+
+            <Image x:Name="titleE1char" Source="title_e1_char.png" />
+            <Image x:Name="titleLchar" Source="title_l_char.png" />
+            <Image x:Name="titleE2char" Source="title_e2_char.png" />
+            <Image x:Name="titleMchar" Source="title_m_char.png" />
+            <controls:GroundElemControl x:Name="groundElemControl" />
+            <ImageButton
+                x:Name="titleSchar"
+                Clicked="TitleSchar_Clicked"
+                Command="{Binding PushTheGroundCommand}"
+                Source="title_s_char.png" />
+
+            <!--  OK  -->
+            <controls:BioElemControl x:Name="bioElemControl" />
+            <Button x:Name="testButton" Command="{Binding GoToTestsPageCommand}" Opacity="0" />
+            <controls:FireElemControl x:Name="fireElemControl" IsVisible="False" />
+            <controls:WaterElemControl x:Name="waterElemControl" IsVisible="False" />
+            <Image
+                x:Name="electricityLink"
+                Aspect="AspectFill"
+                HeightRequest="50"
+                HorizontalOptions="Fill"
+                Opacity="0"
+                Source="electricity_connection.png"
+                VerticalOptions="Start" />
+            <controls:ElectricityElemControl x:Name="electricityElemControl1" />
+            <controls:ElectricityElemControl x:Name="electricityElemControl2" />
+        </AbsoluteLayout>
+
+        <ImageButton
+            Margin="50"
+            Padding="2,0"
+            BackgroundColor="#33333333"
+            BorderColor="WhiteSmoke"
+            BorderWidth="1"
+            Command="{Binding GoToLevelsPageCommand}"
+            CornerRadius="5"
+            HorizontalOptions="Center"
+            Source="{library:Translate Play,
+                                       Type=Image}"
+            VerticalOptions="End"
+            WidthRequest="150" />
+
+        <Image
+            Aspect="Fill"
+            InputTransparent="True"
+            Source="border.png" />
+
+        <ImageButton
+            Margin="30,20"
+            Command="{Binding GoToAchievementsPageCommand}"
+            HeightRequest="50"
+            HorizontalOptions="Start"
+            Source="achievements.png"
+            VerticalOptions="Start"
+            WidthRequest="50" />
+
+        <ImageButton
+            Margin="30,20"
+            Command="{Binding GoToParametersPageCommand}"
+            HeightRequest="50"
+            HorizontalOptions="End"
+            Source="parameters.png"
+            VerticalOptions="Start"
+            WidthRequest="50" />
+
+        <Image
+            Grid.Row="0"
+            Margin="0,20,0,0"
+            HeightRequest="60"
+            HorizontalOptions="Center"
+            IsVisible="False"
+            Opacity="1"
+            Source="{library:Translate Achievements,
+                                       Type=Image}"
+            VerticalOptions="Start" />
+    </Grid>
+</library:BasePage>

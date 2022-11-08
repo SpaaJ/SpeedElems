@@ -1,0 +1,542 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup Label="Globals">
+		<SccProjectName>SAK</SccProjectName>
+		<SccProvider>SAK</SccProvider>
+		<SccAuxPath>SAK</SccAuxPath>
+		<SccLocalPath>SAK</SccLocalPath>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<!--<TargetFrameworks>net6.0-android</TargetFrameworks>-->
+		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<!--<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>-->
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>SpeedElems</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<!--<WarningsAsErrors>nullable</WarningsAsErrors>-->
+		<!--<MauiVersion>6.0.503</MauiVersion>-->
+		
+		<!-- Display name -->
+		<ApplicationTitle>Speed Elems</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.arborisoft.speedelems</ApplicationId>
+		<ApplicationIdGuid>C084FFB7-3F3B-49F2-9A88-561F0E3BC528</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.3.0</ApplicationDisplayVersion>
+		<ApplicationVersion>3</ApplicationVersion>
+
+		<!--<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>-->
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<!--<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>-->
+	</PropertyGroup>
+
+	<!--<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore>speedelems.keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass></AndroidSigningKeyPass>
+		<AndroidSigningStorePass></AndroidSigningStorePass>
+	</PropertyGroup>-->
+		
+	<!--<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
+	  <LangVersion>preview</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
+	  <LangVersion>preview</LangVersion>
+	</PropertyGroup>-->
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.png" Color="#000000" />
+
+		<!-- Not access to the BrandingImage-->
+		<!--<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#FF0000" BaseSize="256,256" />-->
+		
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Remove="Platforms\Android\Renderers\**" />
+	  <Compile Remove="Platforms\Android\Renderers\**" />
+	  <EmbeddedResource Remove="Platforms\Android\Renderers\**" />
+	  <MauiCss Remove="Platforms\Android\Renderers\**" />
+	  <MauiXaml Remove="Platforms\Android\Renderers\**" />
+	  <None Remove="Platforms\Android\Renderers\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Platforms\Android\Resources\values\styles.xml" />
+		<None Remove="Resources\Audio\bio.wav" />
+		<None Remove="Resources\Audio\electricity.wav" />
+		<None Remove="Resources\Audio\fire.wav" />
+		<None Remove="Resources\Audio\ground.wav" />
+		<None Remove="Resources\Audio\music.wav" />
+		<None Remove="Resources\Audio\water.wav" />
+		<None Remove="Resources\Audio\wind.wav" />
+		<None Remove="Resources\Images\abused_en.png" />
+		<None Remove="Resources\Images\abused_fr.png" />
+		<None Remove="Resources\Images\achievement_en.png" />
+		<None Remove="Resources\Images\achievement_fr.png" />
+		<None Remove="Resources\Images\achievements.png" />
+		<None Remove="Resources\Images\achievements_en.png" />
+		<None Remove="Resources\Images\achievements_fr.png" />
+		<None Remove="Resources\Images\arborisoft.png" />
+		<None Remove="Resources\Images\back.png" />
+		<None Remove="Resources\Images\background.png" />
+		<None Remove="Resources\Images\bio.png" />
+		<None Remove="Resources\Images\bio_abused.png" />
+		<None Remove="Resources\Images\bio_faceloose.png" />
+		<None Remove="Resources\Images\bio_facenormal.png" />
+		<None Remove="Resources\Images\bio_facewin.png" />
+		<None Remove="Resources\Images\bio_principal.png" />
+		<None Remove="Resources\Images\block.png" />
+		<None Remove="Resources\Images\block_faceloose.png" />
+		<None Remove="Resources\Images\block_facenormal.png" />
+		<None Remove="Resources\Images\block_facewin.png" />
+		<None Remove="Resources\Images\block_principal.png" />
+		<None Remove="Resources\Images\border.png" />
+		<None Remove="Resources\Images\border_abused.png" />
+		<None Remove="Resources\Images\border_tutorial.png" />
+		<None Remove="Resources\Images\bordertop.png" />
+		<None Remove="Resources\Images\digit_0.png" />
+		<None Remove="Resources\Images\digit_1.png" />
+		<None Remove="Resources\Images\digit_2.png" />
+		<None Remove="Resources\Images\digit_3.png" />
+		<None Remove="Resources\Images\digit_4.png" />
+		<None Remove="Resources\Images\digit_5.png" />
+		<None Remove="Resources\Images\digit_6.png" />
+		<None Remove="Resources\Images\digit_7.png" />
+		<None Remove="Resources\Images\digit_8.png" />
+		<None Remove="Resources\Images\digit_9.png" />
+		<None Remove="Resources\Images\electricity.png" />
+		<None Remove="Resources\Images\electricity_abused.png" />
+		<None Remove="Resources\Images\electricity_Connection.png" />
+		<None Remove="Resources\Images\electricity_faceloose.png" />
+		<None Remove="Resources\Images\electricity_facenormal.png" />
+		<None Remove="Resources\Images\electricity_facewin.png" />
+		<None Remove="Resources\Images\electricity_principal.png" />
+		<None Remove="Resources\Images\electricity_secondary.png" />
+		<None Remove="Resources\Images\electricityduo.png" />
+		<None Remove="Resources\Images\electricitytrio.png" />
+		<None Remove="Resources\Images\elems_icon.png" />
+		<None Remove="Resources\Images\finished_en.png" />
+		<None Remove="Resources\Images\finished_fr.png" />
+		<None Remove="Resources\Images\fire.png" />
+		<None Remove="Resources\Images\fire_facewin.png" />
+		<None Remove="Resources\Images\fire_face_loose.png" />
+		<None Remove="Resources\Images\fire_face_normal.png" />
+		<None Remove="Resources\Images\fire_principal.png" />
+		<None Remove="Resources\Images\fire_secondary.png" />
+		<None Remove="Resources\Images\ground.png" />
+		<None Remove="Resources\Images\ground_abused.png" />
+		<None Remove="Resources\Images\ground_faceloose.png" />
+		<None Remove="Resources\Images\ground_facenormal.png" />
+		<None Remove="Resources\Images\ground_facewin.png" />
+		<None Remove="Resources\Images\ground_principal.png" />
+		<None Remove="Resources\Images\ground_secondary.png" />
+		<None Remove="Resources\Images\ground_wet.png" />
+		<None Remove="Resources\Images\ice.png" />
+		<None Remove="Resources\Images\levels_en.png" />
+		<None Remove="Resources\Images\levels_fr.png" />
+		<None Remove="Resources\Images\level_en.png" />
+		<None Remove="Resources\Images\level_fr.png" />
+		<None Remove="Resources\Images\loose_en.png" />
+		<None Remove="Resources\Images\loose_fr.png" />
+		<None Remove="Resources\Images\missed_en.png" />
+		<None Remove="Resources\Images\missed_fr.png" />
+		<None Remove="Resources\Images\next.png" />
+		<None Remove="Resources\Images\one.png" />
+		<None Remove="Resources\Images\parameters.png" />
+		<None Remove="Resources\Images\parameters_en.png" />
+		<None Remove="Resources\Images\parameters_fr.png" />
+		<None Remove="Resources\Images\play_en.png" />
+		<None Remove="Resources\Images\play_fr.png" />
+		<None Remove="Resources\Images\restart.png" />
+		<None Remove="Resources\Images\speed.png" />
+		<None Remove="Resources\Images\splashscreen.png" />
+		<None Remove="Resources\Images\start_en.png" />
+		<None Remove="Resources\Images\start_fr.png" />
+		<None Remove="Resources\Images\three.png" />
+		<None Remove="Resources\Images\title_e1_char.png" />
+		<None Remove="Resources\Images\title_e2_char.png" />
+		<None Remove="Resources\Images\title_l_char.png" />
+		<None Remove="Resources\Images\title_m_char.png" />
+		<None Remove="Resources\Images\title_speed.png" />
+		<None Remove="Resources\Images\title_s_char.png" />
+		<None Remove="Resources\Images\two.png" />
+		<None Remove="Resources\Images\water.png" />
+		<None Remove="Resources\Images\water_abused.png" />
+		<None Remove="Resources\Images\water_faceloose.png" />
+		<None Remove="Resources\Images\water_facenormal.png" />
+		<None Remove="Resources\Images\water_facewin.png" />
+		<None Remove="Resources\Images\water_principal.png" />
+		<None Remove="Resources\Images\water_secondary.png" />
+		<None Remove="Resources\Images\win0_en.png" />
+		<None Remove="Resources\Images\win0_fr.png" />
+		<None Remove="Resources\Images\win1_en.png" />
+		<None Remove="Resources\Images\win1_fr.png" />
+		<None Remove="Resources\Images\win2_en.png" />
+		<None Remove="Resources\Images\win2_fr.png" />
+		<None Remove="Resources\Images\wind_abused.png" />
+		<None Remove="Resources\Images\wind_faceloose.png" />
+		<None Remove="Resources\Images\wind_facenormal.png" />
+		<None Remove="Resources\Images\wind_facewin.png" />
+		<None Remove="Resources\Images\wind_principal.png" />
+		<None Remove="Resources\Raw\fire_explosion.json" />
+		<None Remove="Resources\Raw\ground_explosion.json" />
+		<None Remove="Resources\Raw\water_explosion.json" />
+		<None Remove="Resources\Raw\Maps\001.json" />
+		<None Remove="Resources\Raw\Maps\002.json" />
+		<None Remove="Resources\Raw\Maps\003.json" />
+		<None Remove="Resources\Raw\Maps\004.json" />
+		<None Remove="Resources\Raw\Maps\005.json" />
+		<None Remove="Resources\Raw\Maps\006.json" />
+		<None Remove="Resources\Raw\Maps\007.json" />
+		<None Remove="Resources\Raw\Maps\008.json" />
+		<None Remove="Resources\Raw\Maps\009.json" />
+		<None Remove="Resources\Raw\Maps\010.json" />
+		<None Remove="Resources\Raw\Maps\011.json" />
+		<None Remove="Resources\Raw\Maps\012.json" />
+		<None Remove="Resources\Raw\Maps\013.json" />
+		<None Remove="Resources\Raw\Maps\014.json" />
+		<None Remove="Resources\Raw\Maps\015.json" />
+		<None Remove="Resources\Raw\Maps\016.json" />
+		<None Remove="Resources\Raw\Maps\017.json" />
+		<None Remove="Resources\Raw\Maps\018.json" />
+		<None Remove="Resources\Raw\Maps\019.json" />
+		<None Remove="Resources\Raw\Maps\020.json" />
+		<None Remove="Resources\Raw\Maps\021.json" />
+		<None Remove="Resources\Raw\Maps\022.json" />
+		<None Remove="Resources\Raw\Maps\023.json" />
+		<None Remove="Resources\Raw\Maps\024.json" />
+		<None Remove="Resources\Raw\Maps\025.json" />
+		<None Remove="Resources\Raw\Maps\026.json" />
+		<None Remove="Resources\Raw\Maps\027.json" />
+		<None Remove="Resources\Raw\Maps\028.json" />
+		<None Remove="Resources\Raw\Maps\029.json" />
+		<None Remove="Resources\Raw\Maps\030.json" />
+		<None Remove="Resources\Raw\Maps\031.json" />
+		<None Remove="Resources\Raw\Maps\032.json" />
+		<None Remove="Resources\Raw\Maps\033.json" />
+		<None Remove="Resources\Raw\Maps\034.json" />
+		<None Remove="Resources\Raw\Maps\035.json" />
+		<None Remove="Resources\Raw\Maps\036.json" />
+		<None Remove="Resources\Raw\Maps\037.json" />
+		<None Remove="Resources\Raw\Maps\038.json" />
+		<None Remove="Resources\Raw\Maps\039.json" />
+		<None Remove="Resources\Raw\Maps\040.json" />
+		<None Remove="Resources\Raw\Maps\041.json" />
+		<None Remove="Resources\Raw\Maps\042.json" />
+		<None Remove="Resources\Raw\Maps\043.json" />
+		<None Remove="Resources\Raw\Maps\044.json" />
+		<None Remove="Resources\Raw\Maps\045.json" />
+		<None Remove="Resources\Raw\Maps\046.json" />
+		<None Remove="Resources\Raw\Maps\047.json" />
+		<None Remove="Resources\Raw\Maps\048.json" />
+		<None Remove="Resources\Raw\Maps\049.json" />
+		<None Remove="Resources\Raw\Maps\050.json" />
+		<None Remove="Resources\Raw\Maps\051.json" />
+		<None Remove="Resources\Raw\Maps\052.json" />
+		<None Remove="Resources\Raw\Maps\053.json" />
+		<None Remove="Resources\Raw\Maps\054.json" />
+		<None Remove="Resources\Raw\Maps\055.json" />
+		<None Remove="Resources\Raw\Maps\056.json" />
+		<None Remove="Resources\Raw\Maps\057.json" />
+		<None Remove="Resources\Raw\Maps\058.json" />
+		<None Remove="Resources\Raw\Maps\059.json" />
+		<None Remove="Resources\Raw\Maps\060.json" />
+		<None Remove="Resources\Raw\Maps\061.json" />
+		<None Remove="Resources\Raw\Maps\062.json" />
+		<None Remove="Resources\Raw\Maps\063.json" />
+		<None Remove="Resources\Raw\Maps\064.json" />
+		<None Remove="Resources\Raw\Maps\065.json" />
+		<None Remove="Resources\Raw\Maps\066.json" />
+		<None Remove="Resources\Raw\Maps\067.json" />
+		<None Remove="Resources\Raw\Maps\068.json" />
+		<None Remove="Resources\Raw\Maps\069.json" />
+		<None Remove="Resources\Raw\Maps\070.json" />
+		<None Remove="Resources\Raw\Maps\071.json" />
+		<None Remove="Resources\Raw\Maps\072.json" />
+		<None Remove="Resources\Raw\Maps\073.json" />
+		<None Remove="Resources\Raw\Maps\074.json" />
+		<None Remove="Resources\Raw\Maps\075.json" />
+		<None Remove="Resources\Raw\Maps\076.json" />
+		<None Remove="Resources\Raw\Maps\077.json" />
+		<None Remove="Resources\Raw\Maps\078.json" />
+		<None Remove="Resources\Raw\Maps\079.json" />
+		<None Remove="Resources\Raw\Maps\080.json" />
+		<None Remove="Resources\Raw\Maps\081.json" />
+		<None Remove="Resources\Raw\Maps\082.json" />
+		<None Remove="Resources\Raw\Maps\083.json" />
+		<None Remove="Resources\Raw\Maps\084.json" />
+		<None Remove="Resources\Raw\Maps\085.json" />
+		<None Remove="Resources\Raw\Maps\086.json" />
+		<None Remove="Resources\Raw\Maps\087.json" />
+		<None Remove="Resources\Raw\Maps\088.json" />
+		<None Remove="Resources\Raw\Maps\089.json" />
+		<None Remove="Resources\Raw\Maps\090.json" />
+		<None Remove="Resources\Raw\Maps\091.json" />
+		<None Remove="Resources\Raw\Maps\092.json" />
+		<None Remove="Resources\Raw\Maps\093.json" />
+		<None Remove="Resources\Raw\Maps\094.json" />
+		<None Remove="Resources\Raw\Maps\095.json" />
+		<None Remove="Resources\Raw\Maps\096.json" />
+		<None Remove="Resources\Raw\Maps\097.json" />
+		<None Remove="Resources\Raw\Maps\098.json" />
+		<None Remove="Resources\Raw\Maps\099.json" />
+		<None Remove="Resources\Raw\Maps\100.json" />
+		<None Remove="Resources\Raw\Maps\101.json" />
+		<None Remove="Resources\Raw\Maps\102.json" />
+		<None Remove="Resources\Raw\Maps\103.json" />
+		<None Remove="Resources\Raw\Maps\104.json" />
+		<None Remove="Resources\Raw\Maps\105.json" />
+		<None Remove="Resources\Raw\Maps\106.json" />
+		<None Remove="Resources\Raw\Maps\107.json" />
+		<None Remove="Resources\Raw\Maps\108.json" />
+		<None Remove="Resources\Raw\Maps\109.json" />
+		<None Remove="Resources\Raw\Maps\110.json" />
+		<None Remove="Resources\Raw\Maps\111.json" />
+		<None Remove="Resources\Raw\Maps\112.json" />
+		<None Remove="Resources\Raw\Maps\113.json" />
+		<None Remove="Resources\Raw\Maps\114.json" />
+		<None Remove="Resources\Raw\Maps\115.json" />
+		<None Remove="Resources\Raw\Maps\116.json" />
+		<None Remove="Resources\Raw\Maps\117.json" />
+		<None Remove="Resources\Raw\Maps\118.json" />
+		<None Remove="Resources\Raw\Maps\119.json" />
+		<None Remove="Resources\Raw\Maps\120.json" />
+		<None Remove="Resources\Raw\Maps\121.json" />
+		<None Remove="Resources\Raw\Maps\122.json" />
+		<None Remove="Resources\Raw\Maps\123.json" />
+		<None Remove="Resources\Raw\Maps\124.json" />
+		<None Remove="Resources\Raw\Maps\125.json" />
+		<None Remove="Resources\Raw\Maps\126.json" />
+		<None Remove="Resources\Raw\Maps\127.json" />
+		<None Remove="Resources\Raw\Maps\128.json" />
+		<None Remove="Resources\Raw\Maps\129.json" />
+		<None Remove="Resources\Raw\Maps\130.json" />
+		<None Remove="Resources\Raw\Maps\131.json" />
+		<None Remove="Resources\Raw\Maps\132.json" />
+		<None Remove="Resources\Raw\Maps\133.json" />
+		<None Remove="Resources\Raw\Maps\134.json" />
+		<None Remove="Resources\Raw\Maps\135.json" />
+		<None Remove="Resources\Raw\Maps\136.json" />
+		<None Remove="Resources\Raw\Maps\137.json" />
+		<None Remove="Resources\Raw\Maps\138.json" />
+		<None Remove="Resources\Raw\Maps\139.json" />
+		<None Remove="Resources\Raw\Maps\140.json" />
+		<None Remove="Resources\Raw\Maps\141.json" />
+		<None Remove="Resources\Raw\Maps\142.json" />
+		<None Remove="Resources\Raw\Maps\143.json" />
+		<None Remove="Resources\Raw\Maps\144.json" />
+		<None Remove="Resources\Raw\Maps\145.json" />
+		<None Remove="Resources\Raw\Maps\146.json" />
+		<None Remove="Resources\Raw\Maps\147.json" />
+		<None Remove="Resources\Raw\Maps\148.json" />
+		<None Remove="Resources\Raw\Maps\149.json" />
+		<None Remove="Resources\Raw\Maps\150.json" />
+		<None Remove="Resources\Raw\Maps\151.json" />
+		<None Remove="Resources\Raw\Maps\152.json" />
+		<None Remove="Resources\Raw\Maps\153.json" />
+		<None Remove="Resources\Raw\Maps\154.json" />
+		<None Remove="Resources\Raw\Maps\155.json" />
+		<None Remove="Resources\Raw\Maps\156.json" />
+		<None Remove="Resources\Raw\Maps\157.json" />
+		<None Remove="Resources\Raw\Maps\158.json" />
+		<None Remove="Resources\Raw\Maps\159.json" />
+		<None Remove="Resources\Raw\Maps\160.json" />
+		<None Remove="Resources\Raw\Maps\161.json" />
+		<None Remove="Resources\Raw\Maps\162.json" />
+		<None Remove="Resources\Raw\Maps\163.json" />
+		<None Remove="Resources\Raw\Maps\164.json" />
+		<None Remove="Resources\Raw\Maps\165.json" />
+		<None Remove="Resources\Raw\Maps\166.json" />
+		<None Remove="Resources\Raw\Maps\167.json" />
+		<None Remove="Resources\Raw\Maps\168.json" />
+		<None Remove="Resources\Raw\Maps\169.json" />
+		<None Remove="Resources\Raw\Maps\170.json" />
+		<None Remove="Resources\Raw\Maps\171.json" />
+		<None Remove="Resources\Raw\Maps\172.json" />
+		<None Remove="Resources\Raw\Maps\173.json" />
+		<None Remove="Resources\Raw\Maps\174.json" />
+		<None Remove="Resources\Raw\Maps\175.json" />
+		<None Remove="Resources\Raw\Maps\176.json" />
+		<None Remove="Resources\Raw\Maps\177.json" />
+		<None Remove="Resources\Raw\Maps\178.json" />
+		<None Remove="Resources\Raw\Maps\179.json" />
+		<None Remove="Resources\Raw\Maps\180.json" />
+		<None Remove="Resources\Raw\Maps\181.json" />
+		<None Remove="Resources\Raw\Maps\182.json" />
+		<None Remove="Resources\Raw\Maps\183.json" />
+		<None Remove="Resources\Raw\Maps\184.json" />
+		<None Remove="Resources\Raw\Maps\185.json" />
+		<None Remove="Resources\Raw\Maps\186.json" />
+		<None Remove="Resources\Raw\Maps\187.json" />
+		<None Remove="Resources\Raw\Maps\188.json" />
+		<None Remove="Resources\Raw\Maps\189.json" />
+		<None Remove="Resources\Raw\Maps\190.json" />
+		<None Remove="Resources\Raw\Maps\191.json" />
+		<None Remove="Resources\Raw\Maps\192.json" />
+		<None Remove="Resources\Raw\Maps\193.json" />
+		<None Remove="Resources\Raw\Maps\194.json" />
+		<None Remove="Resources\Raw\Maps\195.json" />
+		<None Remove="Resources\Raw\Maps\196.json" />
+		<None Remove="Resources\Raw\Maps\197.json" />
+		<None Remove="Resources\Raw\Maps\198.json" />
+		<None Remove="Resources\Raw\Maps\199.json" />
+		<None Remove="Resources\Raw\Maps\200.json" />
+		<None Remove="Resources\Raw\Maps\201.json" />
+		<None Remove="Resources\Raw\Maps\202.json" />
+		<None Remove="Resources\Raw\Maps\203.json" />
+		<None Remove="Resources\Raw\Maps\204.json" />
+		<None Remove="Resources\Raw\Maps\205.json" />
+		<None Remove="Resources\Raw\Maps\206.json" />
+		<None Remove="Resources\Raw\Maps\207.json" />
+		<None Remove="Resources\Raw\Maps\208.json" />
+		<None Remove="Resources\Raw\Maps\209.json" />
+		<None Remove="Resources\Raw\Maps\210.json" />
+		<None Remove="Resources\Raw\Maps\211.json" />
+		<None Remove="Resources\Raw\Maps\212.json" />
+		<None Remove="Resources\Raw\Maps\213.json" />
+		<None Remove="Resources\Raw\Maps\214.json" />
+		<None Remove="Resources\Raw\Maps\215.json" />
+		<None Remove="Resources\Raw\Maps\216.json" />
+		<None Remove="Resources\Raw\Maps\217.json" />
+		<None Remove="Resources\Raw\Maps\218.json" />
+		<None Remove="Resources\Raw\Maps\219.json" />
+		<None Remove="Resources\Raw\Maps\220.json" />
+		<None Remove="Resources\Raw\Maps\221.json" />
+		<None Remove="Resources\Raw\Maps\222.json" />
+		<None Remove="Resources\Raw\Maps\223.json" />
+		<None Remove="Resources\Raw\Maps\224.json" />
+		<None Remove="Resources\Raw\Maps\225.json" />
+		<None Remove="Resources\Raw\Maps\226.json" />
+		<None Remove="Resources\Raw\Maps\227.json" />
+		<None Remove="Resources\Raw\Maps\228.json" />
+		<None Remove="Resources\Raw\Maps\229.json" />
+		<None Remove="Resources\Raw\Maps\230.json" />
+		<None Remove="Resources\Raw\Maps\231.json" />
+		<None Remove="Resources\Raw\Maps\232.json" />
+		<None Remove="Resources\Raw\Maps\233.json" />
+		<None Remove="Resources\Raw\Maps\234.json" />
+		<None Remove="Resources\Raw\Maps\235.json" />
+		<None Remove="Resources\Raw\Maps\236.json" />
+		<None Remove="Resources\Raw\Maps\237.json" />
+		<None Remove="Resources\Raw\Maps\238.json" />
+		<None Remove="Resources\Raw\Maps\239.json" />
+		<None Remove="Resources\Raw\Maps\240.json" />
+		<None Remove="Resources\Raw\Maps\241.json" />
+		<None Remove="Resources\Raw\Maps\242.json" />
+		<None Remove="Resources\Raw\Maps\243.json" />
+		<None Remove="Resources\Raw\Maps\244.json" />
+		<None Remove="Resources\Raw\Maps\245.json" />
+		<None Remove="Resources\Raw\Maps\246.json" />
+		<None Remove="Resources\Raw\Maps\247.json" />
+		<None Remove="Resources\Raw\Maps\248.json" />
+		<None Remove="Resources\Raw\Maps\249.json" />
+		<None Remove="Resources\Raw\Maps\250.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Audio\bio.wav" />
+	  <EmbeddedResource Include="Resources\Audio\electricity.wav" />
+	  <EmbeddedResource Include="Resources\Audio\fire.wav" />
+	  <EmbeddedResource Include="Resources\Audio\ground.wav" />
+	  <EmbeddedResource Include="Resources\Audio\music.wav" />
+	  <EmbeddedResource Include="Resources\Audio\water.wav" />
+	  <EmbeddedResource Include="Resources\Audio\wind.wav" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
+		<PackageReference Include="MetroLog.Maui" Version="2.0.1" />
+		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.59" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Controls\LevelStatusControl.xaml.cs">
+		  <DependentUpon>LevelStatusControl.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Controls\RoundProgressBar.xaml.cs">
+		  <DependentUpon>RoundProgressBar.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\TestsPage.xaml.cs">
+		  <DependentUpon>TestsPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\AchievementsPage.xaml.cs">
+			<DependentUpon>AchievementsPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\GamePage.xaml.cs">
+			<DependentUpon>GamePage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\HomePage.xaml.cs">
+			<DependentUpon>HomePage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\LevelsPage.xaml.cs">
+			<DependentUpon>LevelsPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\ParametersPage.xaml.cs">
+			<DependentUpon>ParametersPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\Localization\AppResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>AppResources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Localization\AppResources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiXaml Update="Controls\LevelStatusControl.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Controls\RoundProgressBar.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\TestsPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\AchievementsPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\GamePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\HomePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\LevelsPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\ParametersPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	</ItemGroup>
+
+</Project>
