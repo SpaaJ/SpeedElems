@@ -1,7 +1,7 @@
 # SpeedElems
 Full .NET MAUI Video Game
 
----->> Avaiable on [Google Play](https://play.google.com/store/apps/details?id=com.arborisoft.speedelems&fbclid=IwAR0jbdmDsBTEoHZqTq-RJ3lsGpHFDtzOcFLrtJ6lxiiYIfjap1TQJvgagXM)
+---->> Avaiable in [Google Play](https://play.google.com/store/apps/details?id=com.arborisoft.speedelems&fbclid=IwAR0jbdmDsBTEoHZqTq-RJ3lsGpHFDtzOcFLrtJ6lxiiYIfjap1TQJvgagXM)
 
 Welcome to the SpeedElems!
 
