@@ -1,6 +1,8 @@
 # SpeedElems
 Full .NET MAUI Video Game
 
+---->> Avaiable on GOOGLE PLAY
+
 Welcome to the SpeedElems!
 
 The Elements are back to measure your skills!
