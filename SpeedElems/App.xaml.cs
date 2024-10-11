@@ -34,12 +34,14 @@ public partial class App : Application
     protected override void OnStart()
     {
         //Load Audio Players
-        AudioPlayerManager.Create(typeof(FireElemControl), "fire.wav");
-        AudioPlayerManager.Create(typeof(GroundElemControl), "ground.wav");
-        AudioPlayerManager.Create(typeof(WindElemControl), "wind.wav");
-        AudioPlayerManager.Create(typeof(ElectricityElemControl), "electricity.wav");
-        AudioPlayerManager.Create(typeof(WaterElemControl), "water.wav");
-        AudioPlayerManager.Create(typeof(BioElemControl), "bio.wav");
+        AudioPlayerManager.CreateBackgroundMediaElement();
+
+        AudioPlayerManager.CreateMediaElement(typeof(FireElemControl), "fire.wav");
+        AudioPlayerManager.CreateMediaElement(typeof(GroundElemControl), "ground.wav");
+        AudioPlayerManager.CreateMediaElement(typeof(WindElemControl), "wind.wav");
+        AudioPlayerManager.CreateMediaElement(typeof(ElectricityElemControl), "electricity.wav");
+        AudioPlayerManager.CreateMediaElement(typeof(WaterElemControl), "water.wav");
+        AudioPlayerManager.CreateMediaElement(typeof(BioElemControl), "bio.wav");
     }
 
     protected override void OnResume()

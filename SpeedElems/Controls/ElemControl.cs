@@ -63,7 +63,11 @@ public abstract class ElemControl : ContentView
             {
                 faceAnimationTimer.Stop();
                 if (Preferences.Get("Parameters.IsEffectsActive", true))
-                    AudioPlayerManager.TypeDictionnary[GetType()].Play();
+                {
+                    var media = AudioPlayerManager.TypeMediaElements[GetType()];
+                    media.Stop();
+                    media.Play();
+                }
             }
             else if (faceAnimationTimer.IsRunning)
             {

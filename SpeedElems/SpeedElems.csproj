@@ -87,13 +87,6 @@
 
 	<ItemGroup>
 		<None Remove="Platforms\Android\Resources\values\styles.xml" />
-		<None Remove="Resources\Audio\bio.wav" />
-		<None Remove="Resources\Audio\electricity.wav" />
-		<None Remove="Resources\Audio\fire.wav" />
-		<None Remove="Resources\Audio\ground.wav" />
-		<None Remove="Resources\Audio\music.wav" />
-		<None Remove="Resources\Audio\water.wav" />
-		<None Remove="Resources\Audio\wind.wav" />
 		<None Remove="Resources\Images\abused_en.png" />
 		<None Remove="Resources\Images\abused_fr.png" />
 		<None Remove="Resources\Images\achievement_en.png" />
@@ -459,15 +452,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Resources\Audio\bio.wav" />
-	  <EmbeddedResource Include="Resources\Audio\electricity.wav" />
-	  <EmbeddedResource Include="Resources\Audio\fire.wav" />
-	  <EmbeddedResource Include="Resources\Audio\ground.wav" />
+	  <EmbeddedResource Include="Resources\Raw\bio.wav" />
+	  <EmbeddedResource Include="Resources\Raw\electricity.wav" />
+	  <EmbeddedResource Include="Resources\Raw\fire.wav" />
+	  <EmbeddedResource Include="Resources\Raw\ground.wav" />
 	  <EmbeddedResource Include="Resources\Raw\music.wav">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
-	  <EmbeddedResource Include="Resources\Audio\water.wav" />
-	  <EmbeddedResource Include="Resources\Audio\wind.wav" />
+	  <EmbeddedResource Include="Resources\Raw\water.wav" />
+	  <EmbeddedResource Include="Resources\Raw\wind.wav" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui.Views;
 using Microsoft.Extensions.Logging;
+using SpeedElems.Controls;
 using SpeedElems.Library;
 using SpeedElems.Models;
 using SpeedElems.ViewModels;
@@ -191,8 +192,14 @@ public partial class HomePage : BasePage<HomePageViewModel>
 
     private void OnPageLoaded(object sender, EventArgs e)
     {
-        AudioPlayerManager.CreateBackgroundMediaElement();
         MainGrid.Add(AudioPlayerManager.BackgroundMediaElement);
+        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(FireElemControl)]);
+        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(GroundElemControl)]);
+        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(WindElemControl)]);
+        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(ElectricityElemControl)]);
+        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(WaterElemControl)]);
+        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(BioElemControl)]);
+
         if (Preferences.Get("Parameters.IsMusicActive", true))
             AudioPlayerManager.BackgroundMediaElement.Play();
     }
