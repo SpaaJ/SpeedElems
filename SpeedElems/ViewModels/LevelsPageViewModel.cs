@@ -93,16 +93,16 @@ public partial class LevelsPageViewModel : ObservableObject
 
     #region Commands
 
-    [ICommand]
+    [RelayCommand]
     private async Task PageAppearing() => await LoadMaps();
 
-    [ICommand]
+    [RelayCommand]
     private Task GoBack() => Shell.Current.GoToAsync("..", false);
 
-    [ICommand]
+    [RelayCommand]
     private Task GoToAchievementsPage() => Shell.Current.GoToAsync(nameof(AchievementsPage), false);
 
-    [ICommand]
+    [RelayCommand]
     private void CollectionViewLoaded(CollectionView control) => collectionView = control;
 
     #endregion Commands

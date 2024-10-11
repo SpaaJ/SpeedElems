@@ -98,9 +98,11 @@ public class AndroidAudioPlayer : IAudioPlayer
 
         //cache to the file system
         path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"cache{index++}.wav");
-        var fileStream = File.Create(path);
-        audioStream.CopyTo(fileStream);
-        fileStream.Close();
+
+        //todo:
+        //var fileStream = File.Create(path);
+        //audioStream.CopyTo(fileStream);
+        //fileStream.Close();
 
         try
         {

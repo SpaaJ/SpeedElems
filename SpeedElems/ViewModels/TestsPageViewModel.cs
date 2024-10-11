@@ -29,34 +29,34 @@ public partial class TestsPageViewModel : ObservableObject
 
     #region Commands
 
-    [ICommand]
+    [RelayCommand]
     private Task GoBack() => Shell.Current.GoToAsync("..", false);
 
-    [ICommand]
+    [RelayCommand]
     private void Clear()
     {
         files.ToList().ForEach(path => File.WriteAllText(path, String.Empty));
         MetroLogs = string.Empty;
     }
 
-    [ICommand]
+    [RelayCommand]
     private void Delete()
     {
         files.ToList().ForEach(path => File.Delete(path));
         MetroLogs = string.Empty;
     }
 
-    [ICommand]
+    [RelayCommand]
     private void PageAppearing() => LoadSettings();
 
-    [ICommand]
+    [RelayCommand]
     private void UpdateSettings()
     {
         Preferences.Set($"Levels.StandardID", StandardID);
         Preferences.Set($"Levels.EasyID", EasyID);
     }
 
-    [ICommand]
+    [RelayCommand]
     private void ResetAchievements()
     {
         // Kill

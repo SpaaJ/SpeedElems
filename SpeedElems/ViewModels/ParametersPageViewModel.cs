@@ -114,7 +114,7 @@ public partial class ParametersPageViewModel : ObservableObject
 
     #region Commands
 
-    [ICommand]
+    [RelayCommand]
     private Task GoBack() => Shell.Current.GoToAsync("..", false);
 
     #endregion Commands

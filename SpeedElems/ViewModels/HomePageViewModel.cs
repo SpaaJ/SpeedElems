@@ -40,22 +40,22 @@ public partial class HomePageViewModel : ObservableObject
 
     #region Commands
 
-    [ICommand]
+    [RelayCommand]
     private void PushTheGround() => CurrentAchievementMessage = AchievementsManager.Complete("Tricks_PushTheGround");
 
-    [ICommand]
+    [RelayCommand]
     private void PushTheWind() => CurrentAchievementMessage = AchievementsManager.Complete("Tricks_SpeedFastWithWind");
 
-    [ICommand]
+    [RelayCommand]
     private Task GoToParametersPage() => Shell.Current.GoToAsync(nameof(ParametersPage), false);
 
-    [ICommand]
+    [RelayCommand]
     private Task GoToAchievementsPage() => Shell.Current.GoToAsync(nameof(AchievementsPage), false);
 
-    [ICommand]
+    [RelayCommand]
     private Task GoToLevelsPage() => Shell.Current.GoToAsync(nameof(LevelsPage), false);
 
-    [ICommand]
+    [RelayCommand]
     private Task GoToTestsPage()
     {
         testCount++;
@@ -65,7 +65,7 @@ public partial class HomePageViewModel : ObservableObject
             return Task.CompletedTask;
     }
 
-    [ICommand]
+    [RelayCommand]
     private void PageAppearing() => testCount = 0;
 
     private int testCount;

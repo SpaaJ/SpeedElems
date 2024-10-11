@@ -104,10 +104,10 @@ public partial class AchievementsPageViewModel : ObservableObject
 
     #region Commands
 
-    [ICommand]
+    [RelayCommand]
     private Task GoBack() => Shell.Current.GoToAsync("..", false);
 
-    [ICommand]
+    [RelayCommand]
     private void PageAppearing() => LoadAchievements();
 
     #endregion Commands

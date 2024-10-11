@@ -91,13 +91,13 @@ public partial class GamePageViewModel : ObservableObject, IQueryAttributable
 
     #region Commands
 
-    [ICommand]
+    [RelayCommand]
     private Task GoBack() => Shell.Current.GoToAsync($"..", false);
 
-    [ICommand]
+    [RelayCommand]
     private async Task PageAppearing() => CurrentElemsLevel = await LevelsManager.GetLevelAsync(levelID);
 
-    [ICommand]
+    [RelayCommand]
     private async Task NextLevel()
     {
         levelID = CurrentElemsLevel.ID + 1;
