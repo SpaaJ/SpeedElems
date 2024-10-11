@@ -1,4 +1,5 @@
 ﻿global using System.Diagnostics;
+using CommunityToolkit.Maui.Views;
 using SpeedElems.Controls;
 using SpeedElems.Library;
 
@@ -39,23 +40,19 @@ public partial class App : Application
         AudioPlayerManager.Create(typeof(ElectricityElemControl), "electricity.wav");
         AudioPlayerManager.Create(typeof(WaterElemControl), "water.wav");
         AudioPlayerManager.Create(typeof(BioElemControl), "bio.wav");
-
-        AudioPlayerManager.CreateBackground("music.wav");
-        if (Preferences.Get("Parameters.IsMusicActive", true))
-            AudioPlayerManager.Background.Play();
     }
 
     protected override void OnResume()
     {
         base.OnResume();
         if (Preferences.Get("Parameters.IsMusicActive", true))
-            AudioPlayerManager.Background.Play();
+            AudioPlayerManager.BackgroundMediaElement.Play();
     }
 
     protected override void OnSleep()
     {
         base.OnSleep();
         if (Preferences.Get("Parameters.IsMusicActive", true))
-            AudioPlayerManager.Background.Pause();
+            AudioPlayerManager.BackgroundMediaElement.Pause();
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui.Views;
+using Microsoft.Extensions.Logging;
 using SpeedElems.Library;
 using SpeedElems.Models;
 using SpeedElems.ViewModels;
@@ -25,6 +26,8 @@ public partial class HomePage : BasePage<HomePageViewModel>
 
         //Initialize de component animés
         InitializeComponentAsync();
+
+        Loaded += OnPageLoaded;
     }
 
     public async void InitializeComponentAsync()
@@ -184,6 +187,13 @@ public partial class HomePage : BasePage<HomePageViewModel>
                 SizesManager.ElemControlSize
             )
         );
+    }
+
+    private void OnPageLoaded(object sender, EventArgs e)
+    {
+        AudioPlayerManager.BackgroundMediaElement = backgroundMediaElement;
+        if (Preferences.Get("Parameters.IsMusicActive", true))
+            AudioPlayerManager.BackgroundMediaElement.Play();
     }
 
     protected override void OnDisappearing()

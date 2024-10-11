@@ -17,7 +17,12 @@
         <toolkit:IsNotNullConverter x:Key="IsNotNullConverter" />
     </library:BasePage.Resources>
     <Grid>
-
+        <toolkit:MediaElement
+            x:Name="backgroundMediaElement"
+            IsVisible="False"
+            ShouldAutoPlay="False"
+            ShouldLoopPlayback="True"
+            Source="embed://music.wav" />
         <!--  Achievement  -->
         <VerticalStackLayout
             Margin="20"
@@ -62,7 +67,10 @@
 
             <!--  OK  -->
             <controls:BioElemControl x:Name="bioElemControl" />
-            <Button x:Name="testButton" Command="{Binding GoToTestsPageCommand}" Opacity="0" />
+            <Button
+                x:Name="testButton"
+                Command="{Binding GoToTestsPageCommand}"
+                Opacity="0" />
             <controls:FireElemControl x:Name="fireElemControl" IsVisible="False" />
             <controls:WaterElemControl x:Name="waterElemControl" IsVisible="False" />
             <Image

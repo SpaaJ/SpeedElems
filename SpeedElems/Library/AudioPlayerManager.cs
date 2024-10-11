@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using CommunityToolkit.Maui.Views;
 
 namespace SpeedElems.Library;
 
@@ -7,9 +8,11 @@ namespace SpeedElems.Library;
 /// </summary>
 public class AudioPlayerManager
 {
-    private static readonly Lazy<IAudioPlayer> backgroundAudioPlayer = new Lazy<IAudioPlayer>(() => Create(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
+    public static MediaElement BackgroundMediaElement;
 
-    public static IAudioPlayer Background => backgroundAudioPlayer.Value;
+    //private static readonly Lazy<IAudioPlayer> backgroundAudioPlayer = new Lazy<IAudioPlayer>(() => Create(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
+
+    //public static IAudioPlayer Background => backgroundAudioPlayer.Value;
 
     public static Dictionary<Type, IAudioPlayer> TypeDictionnary { get; set; } = new Dictionary<Type, IAudioPlayer>(5);
 
@@ -34,15 +37,16 @@ public class AudioPlayerManager
 #endif
     }
 
-    public static void CreateBackground(string fileName, double volume = 0.3)
-    {
-#if __ANDROID__
-        var audioStream = GetAudioStream(fileName);
-        Background.Load(audioStream);
-        Background.Volume = volume;
-        Background.Loop = true;
-#endif
-    }
+    //    public static void CreateBackground(string fileName, double volume = 0.3)
+    //    {
+    //#if __ANDROID__
+    //        var audioStream = GetAudioStream(fileName);
+    //        Background.Load(audioStream);
+    //        Background.Volume = volume;
+    //        Background.Loop = true;
+
+    //#endif
+    //    }
 
     private static Stream GetAudioStream(string filename)
     {

@@ -463,7 +463,9 @@
 	  <EmbeddedResource Include="Resources\Audio\electricity.wav" />
 	  <EmbeddedResource Include="Resources\Audio\fire.wav" />
 	  <EmbeddedResource Include="Resources\Audio\ground.wav" />
-	  <EmbeddedResource Include="Resources\Audio\music.wav" />
+	  <EmbeddedResource Include="Resources\Raw\music.wav">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Resources\Audio\water.wav" />
 	  <EmbeddedResource Include="Resources\Audio\wind.wav" />
 	</ItemGroup>
@@ -471,6 +473,7 @@
 	<ItemGroup>
 		<!--<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />-->
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
+		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="4.1.1" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.91" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.91" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />

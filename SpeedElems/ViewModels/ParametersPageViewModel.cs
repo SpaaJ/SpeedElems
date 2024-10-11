@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Core.Primitives;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SpeedElems.Library;
 
@@ -23,10 +24,10 @@ public partial class ParametersPageViewModel : ObservableObject
             isMusicActive = value;
             Preferences.Set("Parameters.IsMusicActive", value);
 
-            if (AudioPlayerManager.Background.IsPlaying && !value)
-                AudioPlayerManager.Background.Stop();
-            else if (!AudioPlayerManager.Background.IsPlaying && value)
-                AudioPlayerManager.Background.Play();
+            if (AudioPlayerManager.BackgroundMediaElement.CurrentState == MediaElementState.Playing && !value)
+                AudioPlayerManager.BackgroundMediaElement.Stop();
+            else if (AudioPlayerManager.BackgroundMediaElement.CurrentState == MediaElementState.Stopped || AudioPlayerManager.BackgroundMediaElement.CurrentState == MediaElementState.Paused && value)
+                AudioPlayerManager.BackgroundMediaElement.Play();
 
             OnPropertyChanged();
         }
