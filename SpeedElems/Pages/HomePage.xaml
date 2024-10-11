@@ -16,13 +16,8 @@
     <library:BasePage.Resources>
         <toolkit:IsNotNullConverter x:Key="IsNotNullConverter" />
     </library:BasePage.Resources>
-    <Grid>
-        <toolkit:MediaElement
-            x:Name="backgroundMediaElement"
-            IsVisible="False"
-            ShouldAutoPlay="False"
-            ShouldLoopPlayback="True"
-            Source="embed://music.wav" />
+    <Grid x:Name="MainGrid">
+
         <!--  Achievement  -->
         <VerticalStackLayout
             Margin="20"

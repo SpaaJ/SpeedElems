@@ -37,16 +37,17 @@ public class AudioPlayerManager
 #endif
     }
 
-    //    public static void CreateBackground(string fileName, double volume = 0.3)
-    //    {
-    //#if __ANDROID__
-    //        var audioStream = GetAudioStream(fileName);
-    //        Background.Load(audioStream);
-    //        Background.Volume = volume;
-    //        Background.Loop = true;
-
-    //#endif
-    //    }
+    public static void CreateBackgroundMediaElement()
+    {
+        BackgroundMediaElement = new()
+        {
+            Source = MediaSource.FromResource("music.wav"),
+            ShouldShowPlaybackControls = false,
+            ShouldAutoPlay = false,
+            ShouldLoopPlayback = true,
+            IsVisible = false
+        };
+    }
 
     private static Stream GetAudioStream(string filename)
     {

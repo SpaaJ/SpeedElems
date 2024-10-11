@@ -191,7 +191,8 @@ public partial class HomePage : BasePage<HomePageViewModel>
 
     private void OnPageLoaded(object sender, EventArgs e)
     {
-        AudioPlayerManager.BackgroundMediaElement = backgroundMediaElement;
+        AudioPlayerManager.CreateBackgroundMediaElement();
+        MainGrid.Add(AudioPlayerManager.BackgroundMediaElement);
         if (Preferences.Get("Parameters.IsMusicActive", true))
             AudioPlayerManager.BackgroundMediaElement.Play();
     }
