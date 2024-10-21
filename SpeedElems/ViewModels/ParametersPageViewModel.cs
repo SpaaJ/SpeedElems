@@ -24,9 +24,9 @@ public partial class ParametersPageViewModel : ObservableObject
             isMusicActive = value;
             Preferences.Set("Parameters.IsMusicActive", value);
 
-            if (AudioPlayerManager.BackgroundMediaElement.CurrentState == MediaElementState.Playing && !value)
+            if (AudioPlayerManager.BackgroundMediaElement.IsPlaying && !value)
                 AudioPlayerManager.BackgroundMediaElement.Stop();
-            else if (AudioPlayerManager.BackgroundMediaElement.CurrentState == MediaElementState.Stopped || AudioPlayerManager.BackgroundMediaElement.CurrentState == MediaElementState.Paused && value)
+            else if (!AudioPlayerManager.BackgroundMediaElement.IsPlaying && value)
                 AudioPlayerManager.BackgroundMediaElement.Play();
 
             OnPropertyChanged();

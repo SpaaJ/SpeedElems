@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Maui.Views;
+﻿using Plugin.Maui.Audio;
 
 namespace SpeedElems.Library;
 
@@ -7,32 +7,23 @@ namespace SpeedElems.Library;
 /// </summary>
 public class AudioPlayerManager
 {
-    public static MediaElement BackgroundMediaElement;
+    public static IAudioManager AudioManager;
 
-    public static Dictionary<Type, MediaElement> TypeMediaElements = new Dictionary<Type, MediaElement>();
+    public static IAudioPlayer BackgroundMediaElement;
 
-    public static void CreateBackgroundMediaElement()
+    public static Dictionary<Type, IAudioPlayer> TypeMediaElements = new();
+
+    public static async Task CreateBackgroundMediaElement()
     {
-        BackgroundMediaElement = new()
-        {
-            Source = MediaSource.FromResource("music.wav"),
-            ShouldAutoPlay = false,
-            ShouldLoopPlayback = true,
-            ShouldShowPlaybackControls = false,
-            IsVisible = false
-        };
+        var file = await FileSystem.OpenAppPackageFileAsync("music.wav");
+        BackgroundMediaElement = AudioManager.CreatePlayer(file);
+        BackgroundMediaElement.Loop = true;
     }
 
-    public static void CreateMediaElement(Type type, string filename)
+    public static async Task CreateMediaElement(Type type, string filename)
     {
-        MediaElement mediaElement = new()
-        {
-            Source = MediaSource.FromResource(filename),
-            ShouldAutoPlay = false,
-            ShouldLoopPlayback = false,
-            ShouldShowPlaybackControls = false,
-            IsVisible = false
-        };
+        var file = await FileSystem.OpenAppPackageFileAsync(filename);
+        var mediaElement = AudioManager.CreatePlayer(file);
 
         TypeMediaElements.Add(type, mediaElement);
     }

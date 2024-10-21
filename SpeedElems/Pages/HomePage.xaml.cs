@@ -190,15 +190,16 @@ public partial class HomePage : BasePage<HomePageViewModel>
         );
     }
 
-    private void OnPageLoaded(object sender, EventArgs e)
+    private async void OnPageLoaded(object sender, EventArgs e)
     {
-        MainGrid.Add(AudioPlayerManager.BackgroundMediaElement);
-        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(FireElemControl)]);
-        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(GroundElemControl)]);
-        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(WindElemControl)]);
-        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(ElectricityElemControl)]);
-        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(WaterElemControl)]);
-        MainGrid.Add(AudioPlayerManager.TypeMediaElements[typeof(BioElemControl)]);
+        await AudioPlayerManager.CreateBackgroundMediaElement();
+
+        await AudioPlayerManager.CreateMediaElement(typeof(FireElemControl), "fire.wav");
+        await AudioPlayerManager.CreateMediaElement(typeof(GroundElemControl), "ground.wav");
+        await AudioPlayerManager.CreateMediaElement(typeof(WindElemControl), "wind.wav");
+        await AudioPlayerManager.CreateMediaElement(typeof(ElectricityElemControl), "electricity.wav");
+        await AudioPlayerManager.CreateMediaElement(typeof(WaterElemControl), "water.wav");
+        await AudioPlayerManager.CreateMediaElement(typeof(BioElemControl), "bio.wav");
 
         if (Preferences.Get("Parameters.IsMusicActive", true))
             AudioPlayerManager.BackgroundMediaElement.Play();

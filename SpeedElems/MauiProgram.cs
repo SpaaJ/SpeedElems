@@ -2,7 +2,9 @@
 
 using CommunityToolkit.Maui;
 using MetroLog.MicrosoftExtensions;
+using Plugin.Maui.Audio;
 using SkiaSharp.Views.Maui.Controls.Hosting;
+using SpeedElems.Library;
 using SpeedElems.Pages;
 using SpeedElems.TouchTracking;
 using SpeedElems.ViewModels;
@@ -18,13 +20,15 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
-            .UseMauiCommunityToolkitMediaElement()
             .UseSkiaSharp()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
+
+        builder.Services.AddSingleton(AudioManager.Current);
+        AudioPlayerManager.AudioManager = AudioManager.Current;
 
         builder.ConfigureEffects(effects =>
         {

@@ -1,6 +1,4 @@
 ﻿global using System.Diagnostics;
-using CommunityToolkit.Maui.Views;
-using SpeedElems.Controls;
 using SpeedElems.Library;
 
 namespace SpeedElems;
@@ -28,20 +26,6 @@ public partial class App : Application
         InitializeComponent();
 
         MainPage = new AppShell();
-    }
-
-    //On start load Audio files
-    protected override void OnStart()
-    {
-        //Load Audio Players
-        AudioPlayerManager.CreateBackgroundMediaElement();
-
-        AudioPlayerManager.CreateMediaElement(typeof(FireElemControl), "fire.wav");
-        AudioPlayerManager.CreateMediaElement(typeof(GroundElemControl), "ground.wav");
-        AudioPlayerManager.CreateMediaElement(typeof(WindElemControl), "wind.wav");
-        AudioPlayerManager.CreateMediaElement(typeof(ElectricityElemControl), "electricity.wav");
-        AudioPlayerManager.CreateMediaElement(typeof(WaterElemControl), "water.wav");
-        AudioPlayerManager.CreateMediaElement(typeof(BioElemControl), "bio.wav");
     }
 
     protected override void OnResume()
