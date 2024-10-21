@@ -43,7 +43,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="CheckBox">
+    <!--<Style TargetType="CheckBox">
         <Setter Property="Color" Value="{StaticResource Green100Accent}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -57,7 +57,7 @@
                 </VisualStateGroup>
             </VisualStateGroupList>
         </Setter>
-    </Style>
+    </Style>-->
 
     <Style TargetType="DatePicker">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Primary}}" />

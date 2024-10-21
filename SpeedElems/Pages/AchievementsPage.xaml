@@ -3,6 +3,7 @@
     x:Class="SpeedElems.Pages.AchievementsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SpeedElems.Library.Converters"
     xmlns:library="clr-namespace:SpeedElems.Library"
     xmlns:pages="clr-namespace:SpeedElems.Pages"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
@@ -10,26 +11,23 @@
     Title="AchievementsPage"
     x:DataType="viewModels:AchievementsPageViewModel"
     x:TypeArguments="viewModels:AchievementsPageViewModel">
-    <!--  xmlns:converters="clr-namespace:SpeedElems.Library.Converters"  -->
-
     <library:BasePage.Behaviors>
-        <!--<toolkit:EventToCommandBehavior Command="{Binding PageAppearingCommand}" EventName="Appearing" />-->
+        <toolkit:EventToCommandBehavior Command="{Binding PageAppearingCommand}" EventName="Appearing" />
     </library:BasePage.Behaviors>
     <library:BasePage.Resources>
-
-        <toolkit:IntToBoolConverter x:Key="IntToBoolConverter" />
-
-        <!--<converters:ZeroToBoolConverter x:Key="ZeroToBoolConverter" />-->
-
-        <!--<converters:GreaterOrEqualThanParameterToBoolConverter x:Key="GreaterOrEqualThanParameterToBoolConverter" />-->
-
+        <converters:ZeroToBoolConverter x:Key="ZeroToBoolConverter" />
+        <converters:GreaterOrEqualThanParameterToBoolConverter x:Key="GreaterOrEqualThanParameterToBoolConverter" />
         <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
         <toolkit:IsNotNullConverter x:Key="IsNotNullConverter" />
         <Style TargetType="CheckBox">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Color" Value="Green" />
+                            </VisualState.Setters>
+                        </VisualState>
                     </VisualStateGroup>
                 </VisualStateGroupList>
             </Setter>
@@ -80,12 +78,12 @@
                         Grid.Row="1"
                         HorizontalOptions="End"
                         IsEnabled="False"
-                        IsVisible="{Binding Elems_Fire, Converter={StaticResource IntToBoolConverter}}" />
+                        IsVisible="{Binding Elems_Fire, Converter={StaticResource ZeroToBoolConverter}}" />
                     <HorizontalStackLayout
                         Grid.Row="1"
                         Margin="0,2,0,3"
                         HorizontalOptions="End">
-                        <!--<Image
+                        <Image
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Fire, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=1}"
                             Source="fire.png"
@@ -104,7 +102,7 @@
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Fire, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=4}"
                             Source="fire.png"
-                            WidthRequest="25" />-->
+                            WidthRequest="25" />
                     </HorizontalStackLayout>
 
                     <Label
@@ -116,12 +114,12 @@
                         Grid.Row="2"
                         HorizontalOptions="End"
                         IsEnabled="False"
-                        IsVisible="{Binding Elems_Ground, Converter={StaticResource IntToBoolConverter}}" />
+                        IsVisible="{Binding Elems_Ground, Converter={StaticResource ZeroToBoolConverter}}" />
                     <HorizontalStackLayout
                         Grid.Row="2"
                         Margin="0,3"
                         HorizontalOptions="End">
-                        <!--<Image
+                        <Image
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Ground, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=1}"
                             Source="ground.png"
@@ -140,7 +138,7 @@
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Ground, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=4}"
                             Source="ground.png"
-                            WidthRequest="25" />-->
+                            WidthRequest="25" />
                     </HorizontalStackLayout>
 
                     <Label
@@ -152,12 +150,12 @@
                         Grid.Row="3"
                         HorizontalOptions="End"
                         IsEnabled="False"
-                        IsVisible="{Binding Elems_Wind, Converter={StaticResource IntToBoolConverter}}" />
+                        IsVisible="{Binding Elems_Wind, Converter={StaticResource ZeroToBoolConverter}}" />
                     <HorizontalStackLayout
                         Grid.Row="3"
                         Margin="0,3"
                         HorizontalOptions="End">
-                        <!--<Image
+                        <Image
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Wind, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=1}"
                             Source="wind.png"
@@ -176,7 +174,7 @@
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Wind, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=4}"
                             Source="wind.png"
-                            WidthRequest="25" />-->
+                            WidthRequest="25" />
                     </HorizontalStackLayout>
 
                     <Label
@@ -188,12 +186,12 @@
                         Grid.Row="4"
                         HorizontalOptions="End"
                         IsEnabled="False"
-                        IsVisible="{Binding Elems_Water, Converter={StaticResource IntToBoolConverter}}" />
+                        IsVisible="{Binding Elems_Water, Converter={StaticResource ZeroToBoolConverter}}" />
                     <HorizontalStackLayout
                         Grid.Row="4"
                         Margin="0,3"
                         HorizontalOptions="End">
-                        <!--<Image
+                        <Image
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Water, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=1}"
                             Source="water.png"
@@ -207,7 +205,7 @@
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Water, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=3}"
                             Source="water.png"
-                            WidthRequest="25" />-->
+                            WidthRequest="25" />
                     </HorizontalStackLayout>
 
                     <Label
@@ -219,12 +217,12 @@
                         Grid.Row="5"
                         HorizontalOptions="End"
                         IsEnabled="False"
-                        IsVisible="{Binding Elems_Electricity, Converter={StaticResource IntToBoolConverter}}" />
+                        IsVisible="{Binding Elems_Electricity, Converter={StaticResource ZeroToBoolConverter}}" />
                     <HorizontalStackLayout
                         Grid.Row="5"
                         Margin="0,3"
                         HorizontalOptions="End">
-                        <!--<Image
+                        <Image
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Electricity, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=1}"
                             Source="electricity.png"
@@ -238,7 +236,7 @@
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Electricity, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=3}"
                             Source="electricity.png"
-                            WidthRequest="25" />-->
+                            WidthRequest="25" />
                     </HorizontalStackLayout>
 
                     <Label
@@ -250,12 +248,12 @@
                         Grid.Row="6"
                         HorizontalOptions="End"
                         IsEnabled="False"
-                        IsVisible="{Binding Elems_Bio, Converter={StaticResource IntToBoolConverter}}" />
+                        IsVisible="{Binding Elems_Bio, Converter={StaticResource ZeroToBoolConverter}}" />
                     <HorizontalStackLayout
                         Grid.Row="6"
                         Margin="0,3"
                         HorizontalOptions="End">
-                        <!--<Image
+                        <Image
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Bio, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=1}"
                             Source="bio.png"
@@ -274,7 +272,7 @@
                             Margin="0,0,4,0"
                             IsVisible="{Binding Elems_Bio, Converter={StaticResource GreaterOrEqualThanParameterToBoolConverter}, ConverterParameter=4}"
                             Source="bio.png"
-                            WidthRequest="25" />-->
+                            WidthRequest="25" />
                     </HorizontalStackLayout>
 
                     <Label
@@ -286,7 +284,7 @@
                         Grid.Row="7"
                         HorizontalOptions="End"
                         IsEnabled="False"
-                        IsVisible="{Binding Elems_Ice, Converter={StaticResource IntToBoolConverter}}" />
+                        IsVisible="{Binding Elems_Ice, Converter={StaticResource ZeroToBoolConverter}}" />
                     <HorizontalStackLayout
                         Grid.Row="7"
                         Margin="0,3"

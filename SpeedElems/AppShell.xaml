@@ -12,4 +12,9 @@
         Title="HomePage"
         ContentTemplate="{DataTemplate pages:HomePage}"
         Route="HomePage" />
+
+    <!--<ShellContent
+        Title="TestsPage"
+        ContentTemplate="{DataTemplate pages:TestsPage}"
+        Route="TestsPage" />-->
 </Shell>
