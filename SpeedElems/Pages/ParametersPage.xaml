@@ -21,7 +21,7 @@
 
         <Grid
             Grid.Row="1"
-            Margin="10"
+            Margin="0,20,0,0"
             ColumnDefinitions="300,300"
             ColumnSpacing="10"
             HorizontalOptions="CenterAndExpand"
@@ -32,7 +32,7 @@
             <Label
                 Grid.Row="0"
                 Grid.ColumnSpan="2"
-                Margin="0,10,0,0"
+                Margin="0,5,0,0"
                 FontAttributes="Bold"
                 FontSize="Subtitle"
                 HorizontalOptions="Center"
@@ -58,7 +58,7 @@
             <Label
                 Grid.Row="2"
                 Grid.ColumnSpan="2"
-                Margin="0,10,0,0"
+                Margin="0,5,0,0"
                 FontAttributes="Bold"
                 FontSize="Subtitle"
                 HorizontalOptions="Center"
@@ -90,7 +90,7 @@
             <Label
                 Grid.Row="5"
                 Grid.ColumnSpan="2"
-                Margin="0,10,0,0"
+                Margin="0,5,0,0"
                 FontAttributes="Bold"
                 FontSize="Subtitle"
                 HorizontalOptions="Center"
@@ -102,6 +102,13 @@
                 HorizontalOptions="Center"
                 Text="{Binding Version}"
                 VerticalOptions="Center" />
+
+            <library:HyperlinkLabel
+                Grid.Row="7"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                Text="{library:Translate PrivacyPolicy}"
+                Url="https://sites.google.com/view/speedelems-privacy-policy" />
         </Grid>
 
         <Image

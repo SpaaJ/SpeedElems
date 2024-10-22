@@ -279,4 +279,7 @@
   <data name="Tricks_CheckBox" xml:space="preserve">
     <value>Cliquer sur lui même...</value>
   </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Politique de confidentialité</value>
+  </data>
 </root>
